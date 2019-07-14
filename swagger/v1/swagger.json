@@ -1,0 +1,33 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "xpend API"
+  },
+  "basePath": "/api",
+  "paths": {
+    "/user/": {
+      "get": {
+        "summary": "Get user",
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "returns ok"
+          }
+        }
+      }
+    }
+  }
+}

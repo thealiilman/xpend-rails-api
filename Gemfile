@@ -16,6 +16,11 @@ gem 'bcrypt', '~> 3.1.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# API
+gem 'knock'
+gem 'fast_jsonapi'
+
+# Documentation
 gem 'rswag-api'
 gem 'rswag-ui'
 
@@ -37,6 +42,7 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner'
   gem 'rswag-specs'
   gem 'shoulda-matchers'
 end
