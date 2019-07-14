@@ -16,10 +16,9 @@ RSpec.configure do |config|
     'v1/swagger.json' => {
       swagger: '2.0',
       info: {
-        title: 'xpend API V1',
-        version: 'v1'
+        title: 'xpend API',
       },
-      basePath: '/api/v1'
+      basePath: '/api'
     }
   }
 end
