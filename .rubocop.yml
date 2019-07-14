@@ -3,6 +3,10 @@ require: rubocop-rails
 AllCops:
   Exclude:
     - bin/*
+    - config/initializers/*
+    - spec/spec_helper.rb
+    - spec/rails_helper.rb
+    - spec/swagger_helper.rb
 
 Style/Documentation:
   Enabled: false
