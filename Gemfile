@@ -15,6 +15,9 @@ gem 'rails', '~> 5.2.3'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'rswag-api'
+gem 'rswag-ui'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
@@ -33,6 +36,7 @@ group :development do
 end
 
 group :test do
+  gem 'rswag-specs'
   gem 'shoulda-matchers'
 end
 
