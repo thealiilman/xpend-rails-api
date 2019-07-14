@@ -4,9 +4,11 @@ AllCops:
   Exclude:
     - bin/*
     - config/initializers/*
+    - db/*
     - spec/spec_helper.rb
     - spec/rails_helper.rb
     - spec/swagger_helper.rb
+    - Gemfile
 
 Style/Documentation:
   Enabled: false

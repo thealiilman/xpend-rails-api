@@ -6,6 +6,7 @@ ruby '2.6.3'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.3'
+gem 'bcrypt', '~> 3.1.7'
 # gem 'redis', '~> 4.0'
 # gem 'rack-cors'
 
