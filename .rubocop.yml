@@ -10,6 +10,10 @@ AllCops:
     - spec/swagger_helper.rb
     - Gemfile
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/requests/**/*.rb'
+
 Style/Documentation:
   Enabled: false
 
