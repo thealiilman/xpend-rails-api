@@ -1,22 +1,20 @@
 require 'rails_helper'
 
 describe Api::UsersController, type: :request do
-  path '/user/' do
-    get 'Get user' do
+  path '/user' do
+    delete 'Deactivate user account' do
       tags 'Users'
-      produces 'application/json'
+      consumes 'application/json'
+
       parameter name: 'Authorization',
                 in: :header, type: :string, required: true
 
       let(:user) { create(:user) }
-      let(:user_serializer) { UserSerializer.new(user) }
 
       response '200', 'returns ok' do
         let(:Authorization) { "Bearer #{KnockToken.generate(user.id).token}" }
 
-        run_test! do
-          expect(json).to eq(JSON.parse(user_serializer.to_json))
-        end
+        run_test!
       end
     end
   end
