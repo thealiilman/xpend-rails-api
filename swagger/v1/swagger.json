@@ -127,9 +127,7 @@
             "description": "returns ok"
           }
         }
-      }
-    },
-    "/user/": {
+      },
       "get": {
         "summary": "Get user",
         "tags": [
@@ -149,6 +147,60 @@
         "responses": {
           "200": {
             "description": "returns ok"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update user's username and email",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "returns updated user"
+          },
+          "400": {
+            "description": "returns invalid password error"
+          },
+          "422": {
+            "description": "returns error if value is not unique"
           }
         }
       }
