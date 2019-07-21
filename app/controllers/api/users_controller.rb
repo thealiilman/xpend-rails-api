@@ -2,7 +2,13 @@ module Api
   class UsersController < ApiController
     before_action :authenticate_user, only: %i[show update destroy]
 
-    def create; end
+    def create
+      user = User.new(user_signup_params)
+      return render_error(user.errors.messages, :unprocessable_entity) \
+        unless user.save
+
+      render json: UserSerializer.new(user), status: :created
+    end
 
     def show
       render json: UserSerializer.new(current_user)
@@ -11,5 +17,11 @@ module Api
     def update; end
 
     def destroy; end
+
+    private
+
+    def user_signup_params
+      params.require(:user).permit(:username, :email, :password)
+    end
   end
 end
