@@ -53,6 +53,58 @@
         }
       }
     },
+    "/signup": {
+      "post": {
+        "summary": "Create a user",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "username",
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "returns the created user"
+          },
+          "422": {
+            "description": "returns unprocessable entity error"
+          }
+        }
+      }
+    },
     "/user/": {
       "get": {
         "summary": "Get user",
