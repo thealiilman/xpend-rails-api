@@ -16,7 +16,10 @@ module Api
 
     def update; end
 
-    def destroy; end
+    def destroy
+      current_user.destroy
+      head :ok
+    end
 
     private
 

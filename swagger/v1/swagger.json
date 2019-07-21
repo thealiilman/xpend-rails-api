@@ -105,6 +105,30 @@
         }
       }
     },
+    "/user": {
+      "delete": {
+        "summary": "Deactivate user account",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "returns ok"
+          }
+        }
+      }
+    },
     "/user/": {
       "get": {
         "summary": "Get user",
