@@ -5,6 +5,54 @@
   },
   "basePath": "/api",
   "paths": {
+    "/login": {
+      "post": {
+        "summary": "Create a JSON Web Token for the user",
+        "tags": [
+          "Authentications"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "username",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "creates a JSON Web Token for the user"
+          },
+          "400": {
+            "description": "returns user credentials are invalid error"
+          }
+        }
+      }
+    },
     "/user/": {
       "get": {
         "summary": "Get user",

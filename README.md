@@ -9,3 +9,8 @@ This app aims to solve that!
   
 - `bundle install`
 - `rails s` and you're good to go!
+
+## How to update Swagger documentation
+```ruby
+RAILS_ENV=test rake rswag:specs:swaggerize
+```
