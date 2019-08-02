@@ -26,6 +26,7 @@ gem 'rswag-ui'
 
 # Services
 gem 'money-rails', '~> 1.12'
+gem 'eu_central_bank'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
