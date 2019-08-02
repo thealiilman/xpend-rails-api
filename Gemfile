@@ -24,6 +24,9 @@ gem 'fast_jsonapi'
 gem 'rswag-api'
 gem 'rswag-ui'
 
+# Services
+gem 'money-rails', '~> 1.12'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
