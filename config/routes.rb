@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   namespace :api do
     post 'login', to: 'authentications#login'
     post 'signup', to: 'users#create'
+
+    resources :expenses, only: %i[create update delete]
     resource :user, only: %i[show update destroy]
   end
 end

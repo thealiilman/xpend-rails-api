@@ -53,6 +53,69 @@
         }
       }
     },
+    "/expenses": {
+      "post": {
+        "summary": "Create an expense",
+        "tags": [
+          "Expenses"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "expense",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "amount_cents": {
+                  "type": "integer"
+                },
+                "amount_currency": {
+                  "type": "string"
+                },
+                "user_id": {
+                  "type": "integer"
+                },
+                "expense_category_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "title",
+                "amount_cents",
+                "user_id",
+                "expense_category_id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "returns created expense"
+          },
+          "422": {
+            "description": "returns unprocessable entity error"
+          }
+        }
+      }
+    },
     "/signup": {
       "post": {
         "summary": "Create a user",
