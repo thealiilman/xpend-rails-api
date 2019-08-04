@@ -4,5 +4,6 @@ FactoryBot.define do
     description { Faker::Movies::HarryPotter.quote }
     amount_cents { 1000 }
     user
+    expense_category
   end
 end
