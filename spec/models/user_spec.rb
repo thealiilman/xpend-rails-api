@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  describe 'associations' do
+    it { should have_many(:expenses) }
+  end
+
   describe 'validations' do
     subject { FactoryBot.create(:user) }
     it { should validate_presence_of(:username) }
@@ -13,9 +17,5 @@ RSpec.describe User, type: :model do
     end
     it { should allow_value('thealiilman').for(:username) }
     it { should_not allow_value('the-aliilman!').for(:username) }
-  end
-
-  describe 'associations' do
-    it { should have_many(:expenses) }
   end
 end
