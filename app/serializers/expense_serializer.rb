@@ -1,5 +1,4 @@
-class ExpenseSerializer
-  include FastJsonapi::ObjectSerializer
+class ExpenseSerializer < ApplicationSerializer
   attributes :title,
              :description,
              :amount_cents,

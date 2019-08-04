@@ -1,4 +1,3 @@
-class ExpenseCategorySerializer
-  include FastJsonapi::ObjectSerializer
+class ExpenseCategorySerializer < ApplicationSerializer
   attribute :title
 end
