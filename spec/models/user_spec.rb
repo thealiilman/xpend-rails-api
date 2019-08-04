@@ -7,6 +7,12 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:email) }
     it { should validate_uniqueness_of(:username).case_insensitive }
     it { should validate_uniqueness_of(:email).case_insensitive }
+    it do
+      should validate_length_of(:username)
+        .is_at_least(2).is_at_most(16)
+    end
+    it { should allow_value('thealiilman').for(:username) }
+    it { should_not allow_value('the-aliilman!').for(:username) }
   end
 
   describe 'associations' do
