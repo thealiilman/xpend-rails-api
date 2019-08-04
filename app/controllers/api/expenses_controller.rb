@@ -1,7 +1,5 @@
 module Api
   class ExpensesController < ApiController
-    before_action :authenticate_user
-
     def create
       expense = Expense.new(expense_params)
       return render_error(expense.errors.messages, :unprocessable_entity) \

@@ -1,5 +1,6 @@
 module Api
   class AuthenticationsController < ApiController
+    skip_before_action :authenticate_user
     before_action :set_user, only: :login
 
     def login
