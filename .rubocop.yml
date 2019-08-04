@@ -1,6 +1,7 @@
 require: rubocop-rails
 
 AllCops:
+  TargetRubyVersion: 2.6.3
   Exclude:
     - bin/*
     - config/initializers/*
@@ -9,6 +10,7 @@ AllCops:
     - spec/rails_helper.rb
     - spec/swagger_helper.rb
     - Gemfile
+    - vendor/bundle/**/*
 
 Metrics/BlockLength:
   Exclude:
