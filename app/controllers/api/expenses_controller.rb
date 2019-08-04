@@ -1,5 +1,7 @@
 module Api
   class ExpensesController < ApiController
+    before_action :set_expense, only: %i[update destroy]
+
     def index
       expenses = current_user.expenses
       render json: ExpenseSerializer.new(expenses)
@@ -21,6 +23,11 @@ module Api
       render json: ExpenseSerializer.new(expense)
     end
 
+    def destroy
+      @expense.destroy
+      head :ok
+    end
+
     private
 
     def expense_params
@@ -28,6 +35,10 @@ module Api
         .require(:expense)
         .permit(:title, :description, :amount_cents, :amount_currency,
                 :user_id, :expense_category_id)
+    end
+
+    def set_expense
+      @expense = Expense.find(params[:id])
     end
   end
 end
