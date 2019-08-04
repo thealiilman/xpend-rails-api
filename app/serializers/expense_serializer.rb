@@ -5,5 +5,7 @@ class ExpenseSerializer < ApplicationSerializer
              :amount_currency,
              :user_id
 
-  belongs_to :expense_category
+  attribute :expense_category do |object|
+    ExpenseCategorySerializer.new(object.expense_category)
+  end
 end
