@@ -13,6 +13,14 @@ module Api
       render json: ExpenseSerializer.new(expense), status: :created
     end
 
+    def update
+      expense = Expense.find(params[:id])
+      return render_error(expense.errors.messages, :unprocessable_entity) \
+        unless expense.update(expense_params)
+
+      render json: ExpenseSerializer.new(expense)
+    end
+
     private
 
     def expense_params
