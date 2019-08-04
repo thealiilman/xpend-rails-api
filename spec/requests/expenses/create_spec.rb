@@ -35,16 +35,13 @@ describe Api::ExpensesController, type: :request do
         end
 
         run_test! do
-          expect(json['data']['attributes']['title']).to eq(expense.title)
-          expect(json['data']['attributes']['description'])
-            .to eq(expense.description)
-          expect(json['data']['attributes']['amount_cents'])
-            .to eq(expense.amount_cents)
-          expect(json['data']['attributes']['amount_currency'])
-            .to eq(expense.amount_currency)
-          expect(json['data']['attributes']['user_id'])
-            .to eq(expense.user_id)
-          expect(json['included'].first['attributes']['title'])
+          data = json['data']['attributes']
+          expect(data['title']).to eq(expense.title)
+          expect(data['description']).to eq(expense.description)
+          expect(data['amount_cents']).to eq(expense.amount_cents)
+          expect(data['amount_currency']).to eq(expense.amount_currency)
+          expect(data['user_id']).to eq(expense.user_id)
+          expect(data['expense_category']['data']['attributes']['title'])
             .to eq(expense_category.title)
         end
       end

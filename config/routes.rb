@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     post 'login', to: 'authentications#login'
     post 'signup', to: 'users#create'
 
-    resources :expenses, only: %i[create update delete]
+    resources :expenses, except: :show
     resource :user, only: %i[show update destroy]
   end
 end
