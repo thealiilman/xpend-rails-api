@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     post 'login', to: 'authentications#login'
     post 'signup', to: 'users#create'
 
+    post 'forgot_password', to: 'passwords#forgot'
+    post 'reset_password', to: 'passwords#reset'
+
     resources :expenses, except: :show
     resource :user, only: %i[show update destroy]
   end

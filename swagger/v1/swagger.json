@@ -229,6 +229,72 @@
         }
       }
     },
+    "/forgot_password": {
+      "post": {
+        "summary": "User requests for a password reset",
+        "tags": [
+          "Passwords"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user successfully requests for a password reset"
+          },
+          "404": {
+            "description": "returns error when user does not exist"
+          }
+        }
+      }
+    },
+    "/reset_password": {
+      "post": {
+        "summary": "User resets their password",
+        "tags": [
+          "Passwords"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "new_password",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "reset_password_digest",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "resets password of the user"
+          },
+          "400": {
+            "description": "returns error"
+          }
+        }
+      }
+    },
     "/signup": {
       "post": {
         "summary": "Create a user",
