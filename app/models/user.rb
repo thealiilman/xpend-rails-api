@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :username,
             length: { in: 2..16 },
             format: {
-              with: /\A[a-zA-Z_]+\z/,
+              with: /\A[a-zA-Z_\d]+\z/,
               message: 'has non-alphanumeric & non-underscore characters'
             }
 end
