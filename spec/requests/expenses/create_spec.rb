@@ -16,7 +16,13 @@ describe Api::ExpensesController, type: :request do
           title: { type: :string },
           description: { type: :string },
           amount_cents: { type: :integer },
-          amount_currency: { type: :string },
+          amount_currency: {
+            type: :string,
+            # This is such a weird bug.
+            # I can't set a default value but I can set
+            # an enum for this property which sits in an object.
+            enum: Money.default_currency.iso_code
+          },
           user_id: { type: :integer },
           expense_category_id: { type: :integer }
         },
