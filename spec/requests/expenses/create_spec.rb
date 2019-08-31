@@ -44,7 +44,7 @@ describe Api::ExpensesController, type: :request do
           data = json['data']['attributes']
           expect(data['title']).to eq(expense.title)
           expect(data['description']).to eq(expense.description)
-          expect(data['amount_cents']).to eq(expense.amount_cents)
+          expect(data['amount']).to eq(expense.amount.to_f)
           expect(data['amount_currency']).to eq(expense.amount_currency)
           expect(data['user_id']).to eq(expense.user_id)
           expect(data['expense_category']['data']['attributes']['title'])
