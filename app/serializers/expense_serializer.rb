@@ -1,9 +1,12 @@
 class ExpenseSerializer < ApplicationSerializer
   attributes :title,
              :description,
-             :amount_cents,
-             :amount_currency,
-             :user_id
+             :user_id,
+             :amount_currency
+
+  attribute :amount do |object|
+    object.amount.to_f
+  end
 
   attribute :expense_category do |object|
     ExpenseCategorySerializer.new(object.expense_category)
