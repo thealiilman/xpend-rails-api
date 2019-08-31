@@ -4,7 +4,10 @@ module Api
 
     def index
       expenses = current_user.expenses
-      render json: ExpenseSerializer.new(expenses)
+      render json: ExpenseSerializer.new(
+        expenses,
+        params: { currency: filter_params[:currency] }
+      )
     end
 
     def create
@@ -29,6 +32,10 @@ module Api
     end
 
     private
+
+    def filter_params
+      params.permit(:currency)
+    end
 
     def expense_params
       params
