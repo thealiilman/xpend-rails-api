@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post 'reset_password', to: 'passwords#reset'
 
     resources :expenses, except: :show
+    resources :expense_categories, only: :index
     resource :user, only: %i[show update destroy]
   end
 end

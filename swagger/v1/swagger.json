@@ -53,6 +53,30 @@
         }
       }
     },
+    "/expense_categories": {
+      "get": {
+        "summary": "Fetch all expense categories",
+        "tags": [
+          "Expense Categories"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "returns all expense categories"
+          }
+        }
+      }
+    },
     "/expenses": {
       "post": {
         "summary": "Create an expense",
@@ -90,9 +114,6 @@
                 "amount_currency": {
                   "type": "string",
                   "enum": "EUR"
-                },
-                "user_id": {
-                  "type": "integer"
                 },
                 "expense_category_id": {
                   "type": "integer"
