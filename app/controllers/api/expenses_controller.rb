@@ -11,7 +11,7 @@ module Api
     end
 
     def create
-      expense = Expense.new(expense_params)
+      expense = current_user.expenses.new(expense_params)
       return render_error(expense.errors.messages, :unprocessable_entity) \
         unless expense.save
 
@@ -41,7 +41,7 @@ module Api
       params
         .require(:expense)
         .permit(:title, :description, :amount_cents, :amount_currency,
-                :user_id, :expense_category_id)
+                :expense_category_id)
     end
 
     def set_expense

@@ -23,7 +23,6 @@ describe Api::ExpensesController, type: :request do
             # an enum for this property which sits in an object.
             enum: Money.default_currency.iso_code
           },
-          user_id: { type: :integer },
           expense_category_id: { type: :integer }
         },
         required: %i[title amount_cents user_id expense_category_id]
