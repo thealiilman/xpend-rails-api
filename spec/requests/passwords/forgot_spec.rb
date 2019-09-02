@@ -4,7 +4,6 @@ describe Api::PasswordsController, type: :request do
   path '/forgot_password' do
     post 'User requests for a password reset' do
       tags 'Passwords'
-      consumes 'application/json'
       produces 'application/json'
 
       parameter name: :email, in: :query, type: :string, required: true

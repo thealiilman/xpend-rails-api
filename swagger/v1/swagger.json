@@ -142,9 +142,6 @@
         "tags": [
           "Expenses"
         ],
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/json"
         ],
@@ -455,9 +452,6 @@
         "tags": [
           "Passwords"
         ],
-        "consumes": [
-          "application/json"
-        ],
         "produces": [
           "application/json"
         ],
@@ -484,9 +478,6 @@
         "summary": "User resets their password",
         "tags": [
           "Passwords"
-        ],
-        "consumes": [
-          "application/json"
         ],
         "produces": [
           "application/json"
@@ -572,9 +563,6 @@
         "summary": "Deactivate user account",
         "tags": [
           "Users"
-        ],
-        "consumes": [
-          "application/json"
         ],
         "parameters": [
           {

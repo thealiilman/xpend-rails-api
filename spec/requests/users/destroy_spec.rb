@@ -4,7 +4,6 @@ describe Api::UsersController, type: :request do
   path '/user' do
     delete 'Deactivate user account' do
       tags 'Users'
-      consumes 'application/json'
 
       parameter name: 'Authorization',
                 in: :header, type: :string, required: true

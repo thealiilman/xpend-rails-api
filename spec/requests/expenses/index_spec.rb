@@ -4,7 +4,6 @@ describe Api::ExpensesController, type: :request do
   path '/expenses' do
     get 'All expenses of the user' do
       tags 'Expenses'
-      consumes 'application/json'
       produces 'application/json'
 
       parameter name: 'Authorization',

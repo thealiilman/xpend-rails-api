@@ -4,7 +4,6 @@ describe Api::PasswordsController, type: :request do
   path '/reset_password' do
     post 'User resets their password' do
       tags 'Passwords'
-      consumes 'application/json'
       produces 'application/json'
 
       parameter name: :new_password,
