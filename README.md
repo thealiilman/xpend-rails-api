@@ -1,5 +1,5 @@
 # xpend-rails-api
-Xpend is an app for people to track expenses.  
+xpend is an app for people to track expenses.  
 Using our brains to track our expenses can be quite a tedious task, or even, forgotten!  
 This app aims to solve that!
 
