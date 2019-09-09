@@ -8,7 +8,7 @@ gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.3'
 gem 'bcrypt', '~> 3.1.7'
 # gem 'redis', '~> 4.0'
-# gem 'rack-cors'
+gem 'rack-cors'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
