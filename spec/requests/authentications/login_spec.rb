@@ -49,7 +49,7 @@ describe Api::AuthenticationsController, type: :request do
         end
 
         run_test! do
-          expect(json['message']).to eq('User credentials are invalid')
+          expect(json['error']['message']).to eq('User credentials are invalid')
         end
       end
     end
