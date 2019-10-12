@@ -11,18 +11,13 @@ module Api
 
     def set_user
       @user = User.find_by!(username: user_params[:username])
-      return render_error unless @user.authenticate(user_params[:password])
 
-      @user
+      render_error('User credentials are invalid', :bad_request) unless
+        @user.authenticate(user_params[:password])
     end
 
     def user_params
       params.require(:user).permit(:username, :password)
-    end
-
-    def render_error
-      render json: { message: 'User credentials are invalid' },
-             status: :bad_request
     end
   end
 end
