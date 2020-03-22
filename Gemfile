@@ -48,7 +48,6 @@ group :development do
 end
 
 group :test do
-  gem 'database_cleaner'
   gem 'rswag-specs'
   gem 'shoulda-matchers'
 end
