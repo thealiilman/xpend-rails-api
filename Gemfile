@@ -5,7 +5,7 @@ ruby '2.6.3'
 
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.12'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.0.2'
 gem 'bcrypt', '~> 3.1.7'
 # gem 'redis', '~> 4.0'
 gem 'rack-cors'
@@ -38,6 +38,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'rubocop-rails'
+  gem 'rubocop-faker'
 end
 
 group :development do

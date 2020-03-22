@@ -4,6 +4,7 @@ MoneyRails.configure do |config|
   config.default_bank = EuCentralBank.new
   config.default_currency = :eur
   config.locale_backend = :i18n
+  config.rounding_mode = BigDecimal::ROUND_HALF_EVEN
 
   # Set default raise_error_on_money_parsing option
   # It will be raise error if assigned different currency
