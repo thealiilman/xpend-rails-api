@@ -5,7 +5,7 @@ ruby '2.6.3'
 
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.12'
-gem 'rails', '~> 6.0.2'
+gem 'rails', '6.0.3.2'
 gem 'bcrypt', '~> 3.1.7'
 # gem 'redis', '~> 4.0'
 gem 'rack-cors'
@@ -30,7 +30,6 @@ gem 'money-rails', '~> 1.12'
 gem 'eu_central_bank'
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry'
@@ -52,5 +51,3 @@ group :test do
   gem 'rswag-specs'
   gem 'shoulda-matchers'
 end
-
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
