@@ -19,7 +19,7 @@ gem 'nokogiri', ">= 1.10.4"
 
 # API
 gem 'knock'
-gem 'fast_jsonapi'
+gem 'jsonapi-serializer'
 
 # Documentation
 gem 'rswag-api'
