@@ -13,21 +13,21 @@ describe Api::AuthenticationsController, type: :request do
           user: {
             type: :object,
             properties: {
-              username: { type: :string },
+              email: { type: :string },
               password: { type: :string }
             }
           }
         },
-        required: %w[username password]
+        required: %w[email password]
       }
 
-      let!(:user_1) { create(:user, username: 'thealiilman') }
+      let!(:user_1) { create(:user) }
 
       response '201', 'creates a JSON Web Token for the user' do
         let(:user) do
           {
             user: {
-              username: user_1.username,
+              email: user_1.email,
               password: user_1.password
             }
           }
@@ -42,7 +42,7 @@ describe Api::AuthenticationsController, type: :request do
         let(:user) do
           {
             user: {
-              username: user_1.username,
+              email: user_1.email,
               password: 'wasspord'
             }
           }

@@ -27,7 +27,7 @@
                 "user": {
                   "type": "object",
                   "properties": {
-                    "username": {
+                    "email": {
                       "type": "string"
                     },
                     "password": {
@@ -37,7 +37,7 @@
                 }
               },
               "required": [
-                "username",
+                "email",
                 "password"
               ]
             }
@@ -250,7 +250,7 @@
               "MMK",
               "MNT",
               "MOP",
-              "MRO",
+              "MRU",
               "MUR",
               "MVR",
               "MWK",
@@ -340,6 +340,7 @@
               "GHC",
               "LTL",
               "LVL",
+              "MRO",
               "MTL",
               "TMM",
               "YEN",
@@ -528,7 +529,7 @@
                 "user": {
                   "type": "object",
                   "properties": {
-                    "username": {
+                    "given_name": {
                       "type": "string"
                     },
                     "email": {
@@ -541,7 +542,7 @@
                 }
               },
               "required": [
-                "username",
+                "given_name",
                 "email",
                 "password"
               ]
@@ -601,7 +602,7 @@
         }
       },
       "put": {
-        "summary": "Update user's username and email",
+        "summary": "Update user's given_name and email",
         "tags": [
           "Users"
         ],
@@ -627,7 +628,7 @@
                 "user": {
                   "type": "object",
                   "properties": {
-                    "username": {
+                    "given_name": {
                       "type": "string"
                     },
                     "email": {

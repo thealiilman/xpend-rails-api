@@ -3,12 +3,6 @@ class User < ApplicationRecord
 
   has_many :expenses, dependent: :destroy
 
-  validates :username, :email,
-            presence: true, uniqueness: { case_sensitive: false }
-  validates :username,
-            length: { in: 2..16 },
-            format: {
-              with: /\A[a-zA-Z_\d]+\z/,
-              message: 'has non-alphanumeric & non-underscore characters'
-            }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :given_name, presence: true
 end

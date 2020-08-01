@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Api::UsersController, type: :request do
   path '/user' do
-    put "Update user's username and email" do
+    put "Update user's given_name and email" do
       tags 'Users'
       consumes 'application/json'
       produces 'application/json'
@@ -16,7 +16,7 @@ describe Api::UsersController, type: :request do
           user: {
             type: :object,
             properties: {
-              username: { type: :string },
+              given_name: { type: :string },
               email: { type: :string },
               password: { type: :string }
             }
@@ -24,29 +24,29 @@ describe Api::UsersController, type: :request do
         }
       }
 
-      let(:user_1) { create(:user, username: 'thealiilman') }
+      let(:user_1) { create(:user, given_name: 'Ali') }
       let!(:user_2) do
-        create(:user, username: 'liamgallagher', email: 'liam@example.com')
+        create(:user, given_name: 'Liam', email: 'liam@example.com')
       end
       let(:Authorization) { "Bearer #{KnockToken.generate(user_1.id).token}" }
 
       response '200', 'returns updated user' do
-        let(:username) { 'ali' }
+        let(:given_name) { 'Ali' }
         let(:email) { 'ali@example.com' }
 
-        context 'when username is updated' do
+        context 'when given_name is updated' do
           let(:user) do
             {
               user: {
-                username: username,
+                given_name: given_name,
                 password: 'password'
               }
             }
           end
 
           run_test! do
-            expect(json['data']['attributes']['username']).to eq(username)
-            expect(user_1.reload.username).to eq(username)
+            expect(json['data']['attributes']['given_name']).to eq(given_name)
+            expect(user_1.reload.given_name).to eq(given_name)
           end
         end
 
@@ -66,11 +66,11 @@ describe Api::UsersController, type: :request do
           end
         end
 
-        context 'when both username and email are updated' do
+        context 'when both given_name and email are updated' do
           let(:user) do
             {
               user: {
-                username: username,
+                given_name: given_name,
                 email: email,
                 password: 'password'
               }
@@ -79,9 +79,9 @@ describe Api::UsersController, type: :request do
 
           run_test! do
             expect(json['data']['attributes']['email']).to eq(email)
-            expect(json['data']['attributes']['username']).to eq(username)
+            expect(json['data']['attributes']['given_name']).to eq(given_name)
             user_1.reload
-            expect(user_1.reload.username).to eq(username)
+            expect(user_1.reload.given_name).to eq(given_name)
             expect(user_1.reload.email).to eq(email)
           end
         end
@@ -91,7 +91,7 @@ describe Api::UsersController, type: :request do
         let(:user) do
           {
             user: {
-              username: 'ali',
+              given_name: 'Ali',
               email: 'ali@example.com',
               password: 'wasspord'
             }
@@ -104,23 +104,6 @@ describe Api::UsersController, type: :request do
       end
 
       response '422', 'returns error if value is not unique' do
-        context 'when username is not unique' do
-          let(:user) do
-            {
-              user: {
-                username: 'LiamGallagher',
-                password: 'password'
-              }
-            }
-          end
-
-          run_test! do
-            expect(json['error']['message']['username'].first)
-              .to eq('has already been taken')
-            expect(user_1.reload.username).to eq(user_1.username)
-          end
-        end
-
         context 'when email is not unique' do
           let(:user) do
             {

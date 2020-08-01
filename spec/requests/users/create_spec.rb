@@ -13,13 +13,13 @@ describe Api::UsersController, type: :request do
           user: {
             type: :object,
             properties: {
-              username: { type: :string },
+              given_name: { type: :string },
               email: { type: :string },
               password: { type: :string }
             }
           }
         },
-        required: %w[username email password]
+        required: %w[given_name email password]
       }
 
       let(:user_1) { build_stubbed(:user) }
@@ -28,7 +28,7 @@ describe Api::UsersController, type: :request do
         let(:user) do
           {
             user: {
-              username: user_1.username,
+              given_name: user_1.given_name,
               email: user_1.email,
               password: user_1.password
             }
@@ -36,7 +36,7 @@ describe Api::UsersController, type: :request do
         end
 
         run_test! do
-          expect(json['data']['attributes']['username']).to eq(user_1.username)
+          expect(json['data']['attributes']['given_name']).to eq(user_1.given_name)
           expect(json['data']['attributes']['email']).to eq(user_1.email)
         end
       end
@@ -45,7 +45,7 @@ describe Api::UsersController, type: :request do
         let(:user) do
           {
             user: {
-              username: user_1.username
+              given_name: user_1.given_name
             }
           }
         end
