@@ -11,7 +11,7 @@ describe Api::UsersController, type: :request do
       let(:user) { create(:user) }
 
       response '200', 'returns ok' do
-        let(:Authorization) { "Bearer #{KnockToken.generate(user.id).token}" }
+        let(:Authorization) { "Bearer #{JsonWebToken.generate(user.id).token}" }
 
         run_test!
       end

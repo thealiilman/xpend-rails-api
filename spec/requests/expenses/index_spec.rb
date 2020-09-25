@@ -13,7 +13,7 @@ describe Api::ExpensesController, type: :request do
                 enum: Money::Currency.table.keys.map(&:to_s).map(&:upcase)
 
       let(:Authorization) do
-        "Bearer #{KnockToken.generate(user.id).token}"
+        "Bearer #{JsonWebToken.generate(user.id).token}"
       end
 
       response '200', 'returns all expenses of the user' do

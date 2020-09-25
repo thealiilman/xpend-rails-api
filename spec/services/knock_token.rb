@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe KnockToken, type: :service do
+describe JsonWebToken, type: :service do
   let(:user) { create(:user) }
 
   describe '.generate' do

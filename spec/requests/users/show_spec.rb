@@ -12,7 +12,7 @@ describe Api::UsersController, type: :request do
       let(:user_serializer) { UserSerializer.new(user) }
 
       response '200', 'returns ok' do
-        let(:Authorization) { "Bearer #{KnockToken.generate(user.id).token}" }
+        let(:Authorization) { "Bearer #{JsonWebToken.generate(user.id).token}" }
 
         run_test! do
           expect(json).to eq(JSON.parse(user_serializer.to_json))

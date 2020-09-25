@@ -25,7 +25,7 @@ describe Api::ExpensesController, type: :request do
       }
 
       let(:Authorization) do
-        "Bearer #{KnockToken.generate(user.id).token}"
+        "Bearer #{JsonWebToken.generate(user.id).token}"
       end
 
       let(:user) { create(:user) }

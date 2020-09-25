@@ -11,7 +11,7 @@ describe Api::ExpenseCategoriesController, type: :request do
 
       let(:user) { create(:user) }
       let(:Authorization) do
-        "Bearer #{KnockToken.generate(user.id).token}"
+        "Bearer #{JsonWebToken.generate(user.id).token}"
       end
 
       response '200', 'returns all expense categories' do

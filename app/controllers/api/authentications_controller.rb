@@ -4,7 +4,7 @@ module Api
     before_action :set_user, only: :login
 
     def login
-      render json: KnockToken.generate(@user.id), status: :created
+      render json: JsonWebToken.generate(@user.id), status: :created
     end
 
     private
