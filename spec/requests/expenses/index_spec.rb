@@ -6,15 +6,10 @@ describe Api::ExpensesController, type: :request do
       tags 'Expenses'
       produces 'application/json'
 
-      parameter name: 'Authorization',
-                in: :header, type: :string, required: true
-
       parameter name: :currency, in: :query, type: :string, required: false,
                 enum: Money::Currency.table.keys.map(&:to_s).map(&:upcase)
 
-      let(:Authorization) do
-        "Bearer #{JsonWebToken.generate(user.id).token}"
-      end
+      before { access_and_refresh_tokens_cookies(user) }
 
       response '200', 'returns all expenses of the user' do
         let(:user) { create(:user) }

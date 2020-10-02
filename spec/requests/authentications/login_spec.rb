@@ -7,7 +7,7 @@ describe Api::AuthenticationsController, type: :request do
       consumes 'application/json'
       produces 'application/json'
 
-      parameter name: :user, in: :body, schema: {
+      parameter name: :user_params, in: :body, schema: {
         type: :object,
         properties: {
           user: {
@@ -15,34 +15,36 @@ describe Api::AuthenticationsController, type: :request do
             properties: {
               email: { type: :string },
               password: { type: :string }
-            }
+            },
+            required: %w[email password]
           }
-        },
-        required: %w[email password]
+        }
       }
 
-      let!(:user_1) { create(:user) }
+      let(:user) { create(:user) }
 
-      response '201', 'creates a JSON Web Token for the user' do
-        let(:user) do
+      response '200', 'Stores access and refresh tokens in cookies' do
+        let(:user_params) do
           {
             user: {
-              email: user_1.email,
-              password: user_1.password
+              email: user.email,
+              password: user.password
             }
           }
         end
 
         run_test! do
-          expect(json).to include('jwt')
+          expect(response.cookies['access_token']).to be_present
+          expect(response.cookies['refresh_token']).to be_present
+          expect(user.reload.session_id).to be_present
         end
       end
 
-      response '400', 'returns user credentials are invalid error' do
-        let(:user) do
+      response '400', 'Returns user credentials are invalid error' do
+        let(:user_params) do
           {
             user: {
-              email: user_1.email,
+              email: user.email,
               password: 'wasspord'
             }
           }
@@ -50,6 +52,9 @@ describe Api::AuthenticationsController, type: :request do
 
         run_test! do
           expect(json['error']['message']).to eq('User credentials are invalid')
+          expect(response.cookies['access_token']).to_not be_present
+          expect(response.cookies['refresh_token']).to_not be_present
+          expect(user.reload.session_id).to be_nil
         end
       end
     end

@@ -35,5 +35,8 @@ module Xpend
     config.generators do |generator|
       generator.factory_bot dir: 'spec/factories'
     end
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
   end
 end

@@ -18,8 +18,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'nokogiri', ">= 1.10.4"
 
 # API
-gem 'knock'
 gem 'jsonapi-serializer'
+gem 'jwt'
 
 # Documentation
 gem 'rswag-api'

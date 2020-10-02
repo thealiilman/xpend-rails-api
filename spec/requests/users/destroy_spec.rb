@@ -5,14 +5,11 @@ describe Api::UsersController, type: :request do
     delete 'Deactivate user account' do
       tags 'Users'
 
-      parameter name: 'Authorization',
-                in: :header, type: :string, required: true
-
       let(:user) { create(:user) }
 
-      response '200', 'returns ok' do
-        let(:Authorization) { "Bearer #{JsonWebToken.generate(user.id).token}" }
+      before { access_and_refresh_tokens_cookies(user) }
 
+      response '200', 'returns ok' do
         run_test!
       end
     end

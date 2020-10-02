@@ -1,6 +1,6 @@
 module Api
   class UsersController < ApiController
-    skip_before_action :authenticate_user, only: :create
+    skip_before_action :authenticate_request!, only: :create
     before_action :valid_password?, only: :update
 
     def create

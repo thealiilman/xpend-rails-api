@@ -6,13 +6,9 @@ describe Api::ExpenseCategoriesController, type: :request do
       tags 'Expense Categories'
       produces 'application/json'
 
-      parameter name: 'Authorization',
-                in: :header, type: :string, required: true
-
       let(:user) { create(:user) }
-      let(:Authorization) do
-        "Bearer #{JsonWebToken.generate(user.id).token}"
-      end
+
+      before { access_and_refresh_tokens_cookies(user) }
 
       response '200', 'returns all expense categories' do
         before { create_list(:expense_category, 4) }

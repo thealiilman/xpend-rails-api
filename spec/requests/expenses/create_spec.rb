@@ -7,9 +7,6 @@ describe Api::ExpensesController, type: :request do
       consumes 'application/json'
       produces 'application/json'
 
-      parameter name: 'Authorization',
-                in: :header, type: :string, required: true
-
       parameter name: :expense, in: :body, schema: {
         type: :object,
         properties: {
@@ -28,9 +25,7 @@ describe Api::ExpensesController, type: :request do
         required: %i[title amount_cents user_id expense_category_id]
       }
 
-      let(:Authorization) do
-        "Bearer #{JsonWebToken.generate(user.id).token}"
-      end
+      before { access_and_refresh_tokens_cookies(user) }
 
       response '201', 'returns created expense' do
         let(:user) { create(:user) }

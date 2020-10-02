@@ -7,10 +7,7 @@ describe Api::UsersController, type: :request do
       consumes 'application/json'
       produces 'application/json'
 
-      parameter name: 'Authorization',
-                in: :header, type: :string, required: true
-
-      parameter name: :user, in: :body, schema: {
+      parameter name: :user_params, in: :body, schema: {
         type: :object,
         properties: {
           user: {
@@ -25,17 +22,15 @@ describe Api::UsersController, type: :request do
       }
 
       let(:user_1) { create(:user, given_name: 'Ali') }
-      let!(:user_2) do
-        create(:user, given_name: 'Liam', email: 'liam@example.com')
-      end
-      let(:Authorization) { "Bearer #{JsonWebToken.generate(user_1.id).token}" }
+
+      before { access_and_refresh_tokens_cookies(user_1) }
 
       response '200', 'returns updated user' do
         let(:given_name) { 'Ali' }
         let(:email) { 'ali@example.com' }
 
         context 'when given_name is updated' do
-          let(:user) do
+          let(:user_params) do
             {
               user: {
                 given_name: given_name,
@@ -51,7 +46,7 @@ describe Api::UsersController, type: :request do
         end
 
         context 'when email is updated' do
-          let(:user) do
+          let(:user_params) do
             {
               user: {
                 email: email,
@@ -67,7 +62,7 @@ describe Api::UsersController, type: :request do
         end
 
         context 'when both given_name and email are updated' do
-          let(:user) do
+          let(:user_params) do
             {
               user: {
                 given_name: given_name,
@@ -88,7 +83,7 @@ describe Api::UsersController, type: :request do
       end
 
       response '400', 'returns invalid password error' do
-        let(:user) do
+        let(:user_params) do
           {
             user: {
               given_name: 'Ali',
@@ -104,8 +99,12 @@ describe Api::UsersController, type: :request do
       end
 
       response '422', 'returns error if value is not unique' do
+        let(:user_2) do
+          create(:user, given_name: 'Liam', email: 'liam@example.com')
+        end
+
         context 'when email is not unique' do
-          let(:user) do
+          let(:user_params) do
             {
               user: {
                 email: user_2.email,

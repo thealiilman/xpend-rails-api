@@ -1,6 +1,6 @@
 module Api
   class PasswordsController < ApiController
-    skip_before_action :authenticate_user
+    skip_before_action :authenticate_request!
 
     def forgot
       return render_error('User does not exist!', :not_found) unless

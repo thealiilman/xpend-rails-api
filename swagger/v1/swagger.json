@@ -19,7 +19,7 @@
         ],
         "parameters": [
           {
-            "name": "user",
+            "name": "user_params",
             "in": "body",
             "schema": {
               "type": "object",
@@ -33,22 +33,22 @@
                     "password": {
                       "type": "string"
                     }
-                  }
+                  },
+                  "required": [
+                    "email",
+                    "password"
+                  ]
                 }
-              },
-              "required": [
-                "email",
-                "password"
-              ]
+              }
             }
           }
         ],
         "responses": {
-          "201": {
-            "description": "creates a JSON Web Token for the user"
+          "200": {
+            "description": "Stores access and refresh tokens in cookies"
           },
           "400": {
-            "description": "returns user credentials are invalid error"
+            "description": "Returns user credentials are invalid error"
           }
         }
       }
@@ -61,14 +61,6 @@
         ],
         "produces": [
           "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true
-          }
         ],
         "responses": {
           "200": {
@@ -90,12 +82,6 @@
           "application/json"
         ],
         "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true
-          },
           {
             "name": "expense",
             "in": "body",
@@ -146,12 +132,6 @@
           "application/json"
         ],
         "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true
-          },
           {
             "name": "currency",
             "in": "query",
@@ -367,12 +347,6 @@
         ],
         "parameters": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true
-          },
-          {
             "name": "expense_id",
             "in": "path",
             "type": "string",
@@ -397,12 +371,6 @@
           "application/json"
         ],
         "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true
-          },
           {
             "name": "expense_id",
             "in": "path",
@@ -565,14 +533,6 @@
         "tags": [
           "Users"
         ],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true
-          }
-        ],
         "responses": {
           "200": {
             "description": "returns ok"
@@ -586,14 +546,6 @@
         ],
         "produces": [
           "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true
-          }
         ],
         "responses": {
           "200": {
@@ -614,13 +566,7 @@
         ],
         "parameters": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true
-          },
-          {
-            "name": "user",
+            "name": "user_params",
             "in": "body",
             "schema": {
               "type": "object",

@@ -1,10 +1,11 @@
 module Api
   class AuthenticationsController < ApiController
-    skip_before_action :authenticate_user
+    skip_before_action :authenticate_request!
     before_action :set_user, only: :login
 
     def login
-      render json: JsonWebToken.generate(@user.id), status: :created
+      create_session(@user.id)
+      head :ok
     end
 
     private
