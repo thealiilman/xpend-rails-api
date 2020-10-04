@@ -69,7 +69,7 @@ module Api
           secure: Rails.env.production?
         }
 
-        body.merge!(same_site: :none) if Rails.env.production?
+        body.merge!(same_site: :none) if Rails.env.production? && referer_not_allowlisted?
 
         body
       end
@@ -80,6 +80,13 @@ module Api
 
       def refresh_token_payload
         @refresh_token_payload = JsonWebToken.decode(cookies.signed[:refresh_token]).first
+      end
+
+      def referer_not_allowlisted?
+        api_documentation_url =
+          Rails.application.credentials[Rails.env.to_sym][:api_documentation_url]
+
+        request.referer != api_documentation_url
       end
     end
   end
