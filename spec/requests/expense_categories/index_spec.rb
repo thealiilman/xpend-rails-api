@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::ExpenseCategoriesController, type: :request do
-  path '/expense_categories' do
+  path '/api/expense_categories' do
     get 'Fetch all expense categories' do
       tags 'Expense Categories'
       produces 'application/json'

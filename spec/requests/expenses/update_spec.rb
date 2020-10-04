@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::ExpensesController, type: :request do
-  path '/expenses/{expense_id}' do
+  path '/api/expenses/{expense_id}' do
     put 'Update an expense' do
       tags 'Expenses'
       consumes 'application/json'

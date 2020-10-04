@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::UsersController, type: :request do
-  path '/user' do
+  path '/api/user' do
     delete 'Deactivate user account' do
       tags 'Users'
 

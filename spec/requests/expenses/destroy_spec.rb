@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::ExpensesController, type: :request do
-  path '/expenses/{expense_id}' do
+  path '/api/expenses/{expense_id}' do
     delete 'Destroy an expense' do
       tags 'Expenses'
 

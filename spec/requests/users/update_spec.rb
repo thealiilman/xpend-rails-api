@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Api::UsersController, type: :request do
-  path '/user' do
-    put "Update user's given_name and email" do
+  path '/api/user' do
+    put "Update user's given name and email" do
       tags 'Users'
       consumes 'application/json'
       produces 'application/json'

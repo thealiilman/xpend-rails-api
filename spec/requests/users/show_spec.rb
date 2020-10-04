@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::UsersController, type: :request do
-  path '/user' do
+  path '/api/user' do
     get 'Get user' do
       tags 'Users'
       produces 'application/json'

@@ -63,12 +63,15 @@ module Api
       end
 
       def cookie_body(token)
-        {
+        body = {
           value: token,
-          same_site: :none,
           httponly: true,
-          secure: !Rails.env.test?
+          secure: Rails.env.production?
         }
+
+        body.merge!(same_site: :none) if Rails.env.production?
+
+        body
       end
 
       def access_token_payload

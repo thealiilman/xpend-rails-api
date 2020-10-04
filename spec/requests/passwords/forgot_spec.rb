@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::PasswordsController, type: :request do
-  path '/forgot_password' do
+  path '/api/forgot_password' do
     post 'User requests for a password reset' do
       tags 'Passwords'
       produces 'application/json'

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::ExpensesController, type: :request do
-  path '/expenses' do
+  path '/api/expenses' do
     post 'Create an expense' do
       tags 'Expenses'
       consumes 'application/json'

@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 describe Api::AuthenticationsController, type: :request do
-  path '/login' do
+  path '/api/login' do
     post 'Create a JSON Web Token for the user' do
       tags 'Authentications'
       consumes 'application/json'
-      produces 'application/json'
 
       parameter name: :user_params, in: :body, schema: {
         type: :object,

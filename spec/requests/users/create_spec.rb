@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::UsersController, type: :request do
-  path '/signup' do
+  path '/api/signup' do
     post 'Create a user' do
       tags 'Users'
       consumes 'application/json'

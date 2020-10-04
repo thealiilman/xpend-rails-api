@@ -14,11 +14,38 @@ RSpec.configure do |config|
   # the root example_group in your specs, e.g. describe '...', swagger_doc: 'v2/swagger.json'
   config.swagger_docs = {
     'v1/swagger.json' => {
-      swagger: '2.0',
+      openapi: '3.0.3',
       info: {
         title: 'xpend API',
       },
-      basePath: '/api'
+
+      # NOTE
+      #
+      # Cookie authentication is commented out
+      # because web pages are not able to modify
+      # cookies progammatically.
+      # Check out https://github.com/swagger-api/swagger-js/issues/1163.
+      #
+      # components: {
+      #   securitySchemes: {
+      #     cookieAuth: {
+      #       type: :apiKey,
+      #       name: 'access_token',
+      #       in: :cookie
+      #     }
+      #   }
+      # },
+
+      servers: [
+        {
+          url: 'http://localhost:3000',
+          description: 'Development environment'
+        },
+        {
+          url: 'https://xpend-rails-api.herokuapp.com',
+          description: 'Production environment'
+        }
+      ]
     }
   }
 end
